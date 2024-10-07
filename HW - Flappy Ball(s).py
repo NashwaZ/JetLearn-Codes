@@ -12,6 +12,7 @@ class Ball():
     def __init__(self,intial_x,intial_y):
         self.x = intial_x
         self.y = intial_y
+
         self.vx = random.randint(5,10)
         self.vy = 0
         self.radius = random.randint(20,90)
