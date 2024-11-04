@@ -13,7 +13,8 @@ black = (0,0,0)
 red = (255,0,0)
 yellow = (255,255,0)
 
-border = pygame.Rect(width//2-5,0,10,height)
+border = pygame.Rect(width//2 - 5, 0, 10,height)
+
 health_font = pygame.font.SysFont("Calibri", 40)
 winner_font = pygame.font.SysFont("Calibri",60)
 
@@ -23,8 +24,7 @@ vel = 5
 bullet_vel = 7
 max_bullet = 3
 
-spaceship_width = 55
-spaceship_height = 40
+spaceship_width, spaceship_height = 55, 40 
 
 yellow_hit = pygame.USEREVENT+1
 red_hit = pygame.USEREVENT+2
@@ -77,15 +77,14 @@ def red_handle_movement(keys_pressed,red):
     if keys_pressed[pygame.K_DOWN] and red.y + vel + red.height < height-15:
         red.y += vel
 
-def handle_bullets(yellow_bullets,red_bullets,yellow,red):
+def handle_bullets(yellow_bullets, red_bullets, yellow, red):
     for bullet in yellow_bullets:
         bullet.x += bullet_vel
-        
         if red.colliderect(bullet):
             pygame.event.post(pygame.event.Event(red_hit))
             yellow_bullets.remove(bullet)
         elif bullet.x > width:
-            yellow.bullets.remove(bullet)
+            yellow_bullets.remove(bullet)
 
     for bullet in red_bullets:
         bullet.x -= bullet_vel
@@ -93,7 +92,7 @@ def handle_bullets(yellow_bullets,red_bullets,yellow,red):
             pygame.event.post(pygame.event.Event(yellow_hit))
             red_bullets.remove(bullet)
         elif bullet.x < 0:
-            red.bullets.remove(bullet)
+            red_bullets.remove(bullet)
 
 def draw_winner(text):
     draw_text = winner_font.render(text,1,white)
@@ -121,7 +120,7 @@ def main():
                     bullet = pygame.Rect(yellow.x + yellow.width, yellow.y + yellow.height//2 - 2, 10,5)
                     yellow_bullets.append(bullet)
                 if event.key == pygame.K_RCTRL and len(red_bullets) < max_bullet:
-                    bullet = pygame.Rect(red.x + red.width, red.y + red.height//2 -2, 10,5)
+                    bullet = pygame.Rect(red.x,red.y + red.height//2 -2, 10,5)
                     red_bullets.append(bullet)
             if event.type == red_hit:
                 red_health -=1
