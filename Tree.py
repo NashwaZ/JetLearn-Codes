@@ -17,9 +17,31 @@ def in_order(root):
     if root.right_node != None:
         in_order(root.right_node)
 
-in_order(root) 
+print("In-order:", in_order(root))
+
+
+def pre_order(root):
+    print(root.value)
+    if root.left_node != None:
+        pre_order(root.left_node)
+    if root.right_node != None:
+        pre_order(root.right_node)
+
+print("Pre-order:", pre_order(root))
 
 
 
-    
+def post_order(root):
+    if root.left_node != None:
+        post_order(root.left_node)
+    if root.right_node != None:
+        post_order(root.right_node)
+    print(root.value)
 
+print("Post-order:", post_order(root))
+        
+
+
+# in_order: left parent right
+# pre-order: parent left right
+# post-order: left right parent 
