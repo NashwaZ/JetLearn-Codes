@@ -59,3 +59,11 @@ titanic_df['First Name'] = titanic_df['Name'].str.split(" ").str.get(1)
 print(titanic_df['First Name'])
 titanic_df['Last Name'] = titanic_df['Name'].str.split(" ").str.get(3)
 print(titanic_df['Last Name'])
+
+#Hw
+
+titanic_df.loc[0:4,'Name'] = 'Test Passenger'
+print(titanic_df['Name'])
+
+titanic_df.loc[10:16, 'Fare'] = 999
+print(titanic_df[10:16])
