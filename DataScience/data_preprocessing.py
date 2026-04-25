@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.model_selection import train_test_split
 
 
 data = {
@@ -59,7 +60,17 @@ df = df[(df['Salary']>= q1-1.5*qr)&(df['Salary']<=q3+1.5*qr)]
 print(df)
 
 #Step 6 - Feature Selection
+#features 
+X = df.drop('Purchased',axis=1) #Removing the purchased column
+y = df['Purchased']
 
-df.drop()
+#Splitting data into training and testing
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=42)
+
+#printing training and testing data
+print("training data is ",  X_train.shape)
+print("testing data is ", X_test.shape)
+
+
 
 
